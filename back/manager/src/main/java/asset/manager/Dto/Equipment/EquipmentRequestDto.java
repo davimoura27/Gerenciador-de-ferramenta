@@ -17,7 +17,7 @@ public class EquipmentRequestDto {
     @NotBlank
     private String serialNumber;
 
-    @NotNull
+    @NotBlank 
     private String model;
 
     @NotNull

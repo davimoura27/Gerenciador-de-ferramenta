@@ -54,15 +54,16 @@ public class CategoryService {
         logger.info("Categoria criada com sucesso. ID: {}, nome: {}",
                 categorySave.getId(), categorySave.getName());
 
-        return newCategory;
+        return categorySave;
     }
 
     public Category updateCategory(Long id, CategoryRequestDto newCategory){
+        
+        Category category = categoryRepository.findById(id).orElseThrow(() -> 
+        new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria não encontrada"));
+
         if(categoryRepository.existsByNameIgnoreCaseAndIdNot(newCategory.getName(), id))
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Categoria ja registrada");
-
-        Category category = categoryRepository.findById(id).orElseThrow(() -> 
-            new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria não encontrada"));
 
         category.setName(newCategory.getName());
         category.setUpdatedAt(LocalDateTime.now());

@@ -52,4 +52,3 @@ public class CategoryController {
         return  ResponseEntity.noContent().build();
     }
 }
-//Ler ultima conversa com o chat e dar continuidade, mas antes, criar um repositorio e fazer deploy

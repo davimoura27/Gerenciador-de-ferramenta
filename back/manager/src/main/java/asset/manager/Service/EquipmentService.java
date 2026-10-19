@@ -2,16 +2,12 @@ package asset.manager.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import asset.manager.Dto.Equipment.EquipmentDetailsDto;
 import asset.manager.Dto.Equipment.EquipmentListDto;
 import asset.manager.Dto.Equipment.EquipmentRequestDto;
@@ -112,7 +108,7 @@ public class EquipmentService {
             new ResponseStatusException(HttpStatus.NOT_FOUND,"Categoria não encontrada"));
 
         Brand brand = brandRepository.findById(newEquipment.getBrandId()).orElseThrow(() ->
-            new ResponseStatusException(HttpStatus.NOT_FOUND, "Marca não cencontrada"));
+            new ResponseStatusException(HttpStatus.NOT_FOUND, "Marca não encontrada"));
 
         equipment.setName(newEquipment.getName());
         equipment.setDescription(newEquipment.getDescription());

@@ -11,7 +11,7 @@ import lombok.Data;
 @Table(name = "category")
 public class Category extends BaseEntity {
 
-    @Column
+    @Column(nullable = false, unique = true)
     @NotBlank
     private String name;
 

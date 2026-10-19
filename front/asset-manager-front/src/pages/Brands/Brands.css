@@ -2,6 +2,23 @@
     width: 100%;
 }
 
+.brands-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.brands-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.brands-header p {
+    margin: 0;
+    color: #6b7280;
+}
+
 .new-brand-button {
     padding: 10px 16px;
     border: none;

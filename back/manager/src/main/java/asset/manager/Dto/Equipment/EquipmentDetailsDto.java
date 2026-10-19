@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
+@AllArgsConstructor 
 public class EquipmentDetailsDto {
     private Long id;
     private String assetCode;

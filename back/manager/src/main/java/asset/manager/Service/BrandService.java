@@ -2,7 +2,6 @@ package asset.manager.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import asset.manager.Dto.Brand.BrandRequestDto;
 import asset.manager.Entity.Brand;
 import asset.manager.Repository.BrandRepository;
@@ -59,11 +57,12 @@ public class BrandService {
     }
 
     public Brand updateBrand(Long id, BrandRequestDto newBrand){
-        if(brandRepository.existsByNameIgnoreCaseAndIdNot(newBrand.getName(), id))
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Marca ja registrada");
-
+        
         Brand brand = brandRepository.findById(id).orElseThrow(
             () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Marca não encontrada"));
+            
+        if(brandRepository.existsByNameIgnoreCaseAndIdNot(newBrand.getName(), id))
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Marca ja registrada");
         
         brand.setName(newBrand.getName());
         brand.setUpdatedAt(LocalDateTime.now());

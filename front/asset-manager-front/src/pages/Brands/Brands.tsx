@@ -56,7 +56,7 @@ export function Brands(){
             <button 
                 className="new-brand-button" 
                 type="button" 
-                onClick={() => setShowForm(true)}>
+                onClick={() => {setShowForm(true); setName(""); setShowForm(true); }}>
                 Nova marca
             </button>
 
