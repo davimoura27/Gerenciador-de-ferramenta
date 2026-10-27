@@ -4,6 +4,8 @@ import { Equipments } from "./pages/Equipments/Equipments";
 import { Brands } from "./pages/Brands/Brands";
 import { Categories } from "./pages/Categories/Categories";
 import { Layout } from "./components/Layout/Layout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export function App() {
@@ -18,6 +20,7 @@ export function App() {
           <Route path="/categories" element={<Categories/>} />
         </Route>
       </Routes>
+      <ToastContainer position="top-right" autoClose={3000}/>
     </BrowserRouter>
   )
 }

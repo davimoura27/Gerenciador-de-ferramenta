@@ -9,6 +9,7 @@ import { useCategories } from "../../hooks/useCategories";
 import { useBrands } from "../../hooks/useBrands";
 import React, { useState } from "react";
 import { getEquipmentById } from "../../api/equipmentApi";
+import { ToastNotify } from "../../utils/ToastNotify";
 
 export function Equipments(){
     const [selectedEquipment, setSelectedEquipment] = useState<Equipment | null>(null);
@@ -77,7 +78,7 @@ export function Equipments(){
             <button className="new-equipment-button" onClick={() => setShowForm(true)}>
                 Novo equipamento
             </button>
-
+            
             {showForm && (
                <EquipmentForm 
                     formData={formData} 
