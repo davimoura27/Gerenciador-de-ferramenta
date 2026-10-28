@@ -62,11 +62,8 @@ export function Equipments(){
     }
 
     const handleDeleteEquipment = (equipment: Equipment) => {
-        const confirm = window.confirm(`Tem certeza que deseja excluir o equipamento "${equipment.name}"?`)
-        if(!confirm) return;
-        
-        delEquipment(equipment.id).then(() => alert("Equipamento excluido com sucesso"))
-            .catch(error => console.error(error))
+        ToastNotify.confirm(`Tem certeza que deseja excluir o equipamento "${equipment.name}"?`, 
+            () => delEquipment(equipment.id))
     }
 
     return(

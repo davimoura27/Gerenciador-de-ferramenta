@@ -12,3 +12,79 @@ body {
 a {
   color: inherit;
 }
+
+.Toastify__toast-theme--light.Toastify__toast--success {
+  background-color: #fff;
+  color: #757575;
+}
+
+.Toastify__toast--success .Toastify__toast-icon svg {
+  fill: #119742 !important;
+  color: #119742 !important;
+  stroke: #16a34a !important;
+}
+.Toastify__toast--error .Toastify__toast-icon svg {
+  fill: #dc2626 !important;
+  color: #dc2626 !important;
+  stroke: #dc2626 !important;
+}
+.Toastify__toast--info .Toastify__toast-icon svg {
+  fill: #2563eb !important;
+  color: #2563eb !important;
+  stroke: #2563eb !important;
+}
+
+.toast-confirm {
+  width: 100%;
+  color: #1f2937;
+}
+
+.toast-confirm .toast-confirm__message {
+  margin: 0 0 16px;
+  color: #1f2937;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.toast-confirm .toast-confirm__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.toast-confirm .toast-confirm__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: auto;
+  margin: 0;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.toast-confirm .toast-confirm__button--confirm {
+  background-color: #16a34a;
+  color: #fff;
+}
+
+.toast-confirm .toast-confirm__button--confirm:hover {
+  background-color: #15803d;
+}
+
+.toast-confirm .toast-confirm__button--cancel {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.toast-confirm .toast-confirm__button--cancel:hover {
+  background-color: #d1d5db;
+}

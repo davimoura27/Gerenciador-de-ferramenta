@@ -20,7 +20,7 @@ export function App() {
           <Route path="/categories" element={<Categories/>} />
         </Route>
       </Routes>
-      <ToastContainer position="top-right" autoClose={3000}/>
+      <ToastContainer position="top-right" autoClose={3000} theme="light" />
     </BrowserRouter>
   )
 }
