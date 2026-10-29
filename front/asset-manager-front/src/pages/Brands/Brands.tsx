@@ -4,6 +4,7 @@ import type { Brand } from "../../types/Brand";
 import { BrandTable } from "../../components/Brands/BrandTable/BrandTable";
 import { BrandForm } from "../../components/Brands/BrandForm/BrandForm";
 import "./Brands.css";
+import { ToastNotify } from "../../utils/ToastNotify";
 
 export function Brands(){
     const {brands, addBrand, editBrand, removeBrand} = useBrands();
@@ -17,15 +18,15 @@ export function Brands(){
         if(brandToEdit){
             editBrand(brandToEdit.id, name).then(() => { 
                 handleCancelForm();
-                alert("Marca atualizada com sucesso")
+                ToastNotify.success("Marca atualizada com sucesso")
             }).catch(error => {console.error(error)
-                alert("Erro ao atualizar a marca")});
+                ToastNotify.error("Erro ao atualizar marca")});
         }else{
             addBrand(name).then(() => {setName("");
                 handleCancelForm();
-                alert("Marca cadastrada com sucesso")
+                ToastNotify.success("Marca cadastrada com sucesso")
             }).catch(error => {console.error(error)
-                alert("Erro ao cadastrar a marca")
+                ToastNotify.error("Erro ao cadastrar marca")
             });
         }
     }
@@ -43,11 +44,12 @@ export function Brands(){
     }
 
     const handleDeleteBrand = (brand: Brand) => {
-        const confirm = window.confirm(`Tem certeza que deseja excluir a marca ${brand.name}?`)
-        if (!confirm) return;
-
-        removeBrand(brand.id).then(() => alert("Marca exluida com sucesso"))
-            .catch(error => console.error(error));
+        ToastNotify.confirm(`Tem certeza que deseja excluir a marca ${brand.name}?`,
+            () => removeBrand(brand.id).then(() => ToastNotify.success("Marca exluida com sucesso"))
+                    .catch(error => {
+                        console.error(error);
+                        ToastNotify.error("Erro ao excluir marca")})
+        );        
     }
 
     return(
@@ -56,7 +58,7 @@ export function Brands(){
             <button 
                 className="new-brand-button" 
                 type="button" 
-                onClick={() => {setShowForm(true); setName(""); setShowForm(true); }}>
+                onClick={() => {setShowForm(true); setName("");}}>
                 Nova marca
             </button>
 

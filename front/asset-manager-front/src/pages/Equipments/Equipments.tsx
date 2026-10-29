@@ -25,7 +25,6 @@ export function Equipments(){
         event.preventDefault();
 
         if(equipmentToEdit){
-            console.log("Dados enviados:", getEquipmentData());
 
             editEquipment(equipmentToEdit.id, getEquipmentData()).then(() => {
                 clearForm();

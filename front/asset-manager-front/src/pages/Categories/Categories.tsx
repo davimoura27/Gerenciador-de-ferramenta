@@ -4,6 +4,7 @@ import { useCategories } from "../../hooks/useCategories";
 import type { Category } from "../../types/Category";
 import { CategoryForm } from "../../components/Categories/CategoryForm/CategoryForm";
 import "./Category.css";
+import { ToastNotify } from "../../utils/ToastNotify";
 
 export function Categories(){
     const {categories, addCategory, editCategory, removeCategory} = useCategories();
@@ -17,19 +18,19 @@ export function Categories(){
         if(categoryToEdit){
             editCategory(categoryToEdit.id, name).then(() => {
                 handleCancelForm();
-                alert("Categoria atualizada com sucesso")
+                ToastNotify.success("Categoria atualizada com sucesso")
             }).catch(error => {
                 console.error(error)
-                alert("Erro ao atualizar categoria")
+                ToastNotify.error("Erro ao atualizar categoria")
             });            
         } else{
             addCategory(name).then(() => {
                 setName("");
                 handleCancelForm();
-                alert("Categoria cadastrada com sucesso")
+                ToastNotify.success("Categoria cadastrada com sucesso")
             }).catch(error => {
                 console.error(error)
-                alert("Erro ao cadastrar a categoria")
+                ToastNotify.error("Erro ao cadastrar categoria")
             });
         }
     }
@@ -47,11 +48,14 @@ export function Categories(){
     }
 
     const handleDeleteCategory = (category: Category) => {
-        const confirm = window.confirm(`Tem certeza que deseja excluir a categoria ${category.name}?`)
-        if (!confirm) return;
+        ToastNotify.confirm(`Tem certeza que deseja excluir a categoria ${category.name}?`,
+           () => removeCategory(category.id).then(() => ToastNotify.success("Categoria exluida com sucesso"))
+                    .catch(error => {
+                        console.error(error);
+                        ToastNotify.error("Erro ao excluir categoria")
+                    })
+        )
 
-        removeCategory(category.id).then(() => alert("Categoria exluida com sucesso"))
-            .catch(error => console.error(error));
     }
 
     return(
